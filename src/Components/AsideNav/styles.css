@@ -1,0 +1,41 @@
+aside{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 100vh;
+  
+  background-color: #A8DBA8;
+}
+
+aside .logo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 60px;
+  font-size: 28px;
+  font-weight: 700;
+  background-color: #79BD9A;
+  color: #FFF;
+  font-size: 22px;
+
+  cursor: pointer;
+  
+}
+
+aside nav{
+
+}
+
+aside nav div{
+  height: 40px;
+  color: #FFF;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+aside nav div:hover{
+  background-color: #79BD9A;
+  cursor: pointer;
+}
