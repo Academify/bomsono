@@ -11,11 +11,14 @@ export default function Home(){
         <Header/>
         <main>
           <section>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            <Card title={"Total Caixa"} value={"R$ 7.656,72"}/>
+            <Card title={"Funcionários"} value={"834"}/>
+            <Card title={"Clientes Ativos"} value={"5530"}/>
+            <Card title={"Total gasto"} value={"R$ 4.356,28"}/>
+            <Card title={"Taxa de ocupação"} value={"57,36%"}/>
+          </section>
+          <section>
+            <h1>Restante do conteúdo</h1>
           </section>
         </main>
       </section>

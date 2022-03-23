@@ -16,4 +16,10 @@ header h1{
 header h3{
   margin-top: 6px;
   cursor: pointer;
+  color: #FFF
+}
+
+.exit{
+  text-decoration: none;
+  color: inherit;
 }

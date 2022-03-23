@@ -1,10 +1,10 @@
 import './styles.css';
 
-export default function Card(){
+export default function Card({title, value}){
   return(
     <div className='card'>
-      <h6>Total Caixa</h6>
-      <h1>R$ 7.656,72</h1>
+      <h6>{title}</h6>
+      <h1>{value}</h1>
     </div>
   );
 }

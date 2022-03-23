@@ -8,15 +8,30 @@
 .content section{
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 95%;
 }
 
 .content section main{
   padding-top: 30px;
   padding-left: 30px;
+  flex-direction: column;
 }
 
 .content section main section{
   flex-direction: row;
-  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  gap: 5%;
+}
+
+.content section main section .listValues{
+  width: 50%;
+}
+
+.content section main section .listValues h1{
+  text-align: center;  
+}
+
+.content section main section .listValues tr th{
+  text-align: left;
 }

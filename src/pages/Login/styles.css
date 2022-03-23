@@ -1,0 +1,39 @@
+.contentLogin{
+  font-family: Roboto;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 25vh;
+}
+
+.contentLogin h1{
+  margin-bottom: 50px;
+}
+
+.contentLogin form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.contentLogin input{
+  height: 40px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.contentLogin button{
+  color: #FFF;
+  font-family: Roboto;
+  font-weight: 700;
+  width: 90%;
+  height: 40px;
+  border: 1px solid #dcdce6;
+  background-color: #79BD9A;
+}
