@@ -1,6 +1,7 @@
 import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
+import Card from '../../Components/common/Card';
 
 export default function Home(){
   return(
@@ -9,7 +10,13 @@ export default function Home(){
       <section>
         <Header/>
         <main>
-          <h1>Conteúdo aqui</h1>
+          <section>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+            <Card/>
+          </section>
         </main>
       </section>
     </div>
