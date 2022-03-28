@@ -2,8 +2,18 @@ import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
 import Card from '../../Components/common/Card';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 export default function Home(){
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(sessionStorage.getItem('login') === null){
+      navigate('/login');
+    }
+  });
+
   return(
     <div className="content">
       <AsideNav/>
@@ -24,4 +34,5 @@ export default function Home(){
       </section>
     </div>
   );
+
 }
