@@ -1,0 +1,117 @@
+
+.content section .mainContent{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 30px;
+
+}
+
+.quartoForm{
+  margin-top: 30px;
+}
+
+.quartoTable{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.quartoHeader{
+  background-color: #cecece;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  border-radius: 4px;
+  justify-content: space-between;
+  padding-inline: 60px;
+  align-items: center;
+}
+
+.quartoItem{
+  background-color: #e7e7e7;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  padding-inline: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editBtn{
+  cursor: pointer;
+  color: #3B8686;
+}
+
+
+.quartoContentBox{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.newQuarto{
+  height: 40px;
+  width: 10%;
+  border: 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #3B8686;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 90%;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.quartoContentBox form{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.quartoContentBox form input[type=number]{
+  height: 40px;
+  border-radius: 4px;
+}
+.quartoContentBox form input[type=checkbox]{
+  height: 20px;
+  border-radius: 4px;
+}
+
+.quartoRegisterBtn{
+  height: 40px;
+  width: 10%;
+  border: 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #3B8686;
+}
+
+.checkboxDiv{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.labelCheckbox{
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.quartoAdaptado{
+  align-items: center;
+  justify-content: left;
+  width: 5%;
+}

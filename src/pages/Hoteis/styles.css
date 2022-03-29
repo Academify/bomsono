@@ -7,23 +7,59 @@
 
 }
 
-.content section .mainContent div{
-  margin-top: 30px;
+.hotelTable{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.content section .mainContent div{
+.hotelTable .hotelHeader{
+  background-color: #cecece;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  border-radius: 4px;
+  justify-content: space-between;
+  padding-inline: 60px;
+  align-items: center;
+}
+
+.hotelTable .hotelItem{
+  background-color: #e7e7e7;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  padding-inline: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hotelTable .hotelItem .editBtn{
+  cursor: pointer;
+  color: #3B8686;
+}
+
+
+.content section .mainContent .hotelContentBox{
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.content section .mainContent div .newHotel{
+.content section .mainContent .hotelContentBox .newHotel{
   height: 40px;
   width: 10%;
   border: 5px;
   border-radius: 4px;
   color: #fff;
   background-color: #3B8686;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 90%;
@@ -31,21 +67,21 @@
   cursor: pointer;
 }
 
-.content section .mainContent div form{
+.content section .mainContent .hotelContentBox form{
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.content section .mainContent div form input{
+.content section .mainContent .hotelContentBox form input{
   height: 40px;
-  width: 45%;
   border-radius: 4px;
 }
 
-.content section .mainContent div form button{
+.content section .mainContent .hotelContentBox form .hotelRegisterBtn{
   height: 40px;
-  width: 10%;
+  width: 25%;
   border: 5px;
   border-radius: 4px;
   color: #fff;

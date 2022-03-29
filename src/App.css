@@ -13,8 +13,9 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
-input, button, textarea{
+input, button, textarea, select{
   font: 400 18px Roboto, sans-serif;
+  color: #333;
 }
 
 button{
@@ -30,6 +31,12 @@ form input{
   padding: 0 10px;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 form textarea{
   width: 100%;
   resize: vertical;
@@ -39,6 +46,15 @@ form textarea{
   border: 1px solid #dcdce6;
   border-radius: 8px;
   padding: 16px 24px;
+  line-height: 24px;
+}
+
+form select{
+  height: 40px;
+  color: #333;
+  border: 1px solid #dcdce6;
+  border-radius: 4px;
+  padding: 4px 4px;
   line-height: 24px;
 }
 

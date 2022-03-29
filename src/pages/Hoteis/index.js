@@ -2,21 +2,53 @@ import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
 import HotelRegister from './form';
+import HotelEdit from './edit';
 import { useState } from 'react';
 
 
 
 export default function Hoteis(){
   const [creating, setCreating] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [hotel, setHotel] = useState({});
 
   function renderContent(){
     if(creating){
       return(<HotelRegister setCreating={setCreating}/>);
+    }else if(editing){
+      return(<HotelEdit setEditing={setEditing} cidade={hotel.cidade} estado={hotel.estado}/>)
     }else{
       return( 
         <>
           <div className='newHotel' onClick={() => setCreating(true)}>Novo Hotel</div>
-          <h1>Tabela de hoteis</h1>
+          <h1>Hoteis</h1>
+          <div className='hotelTable'>
+            <div className='hotelHeader'>
+              <h2>Código</h2>
+              <h2>Cidade</h2>
+              <h2>Estado</h2>
+              <h2>Ações</h2>
+            </div>
+            <div className='hotelItem'>
+              <h2>1</h2>
+              <h2>Ipatinga</h2>
+              <h2>Minas Gerais</h2>
+              <h2 className='editBtn' onClick={() => {
+                setEditing(true)
+                setHotel({cidade: "Ipatinga", estado: "Minas Gerais"});
+              }}>Editar</h2>
+            </div>
+            <div className='hotelItem'>
+              <h2>2</h2>
+              <h2>Viçosa</h2>
+              <h2>Minas Gerais</h2>
+              <h2 className='editBtn' onClick={() => {
+                setEditing(true)
+                setHotel({cidade: "Viçosa", estado: "Minas Gerais"});
+              }}>Editar</h2>
+            </div>
+            
+          </div>
         </>
       )
     }
@@ -29,7 +61,7 @@ export default function Hoteis(){
         <Header/>
         <div className='mainContent'>
           <h1>Hoteis</h1>
-          <div>
+          <div className='hotelContentBox'>
             { renderContent() }
           </div>
         </div>

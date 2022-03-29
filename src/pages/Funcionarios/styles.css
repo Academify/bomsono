@@ -1,0 +1,86 @@
+
+.funcionarioTable{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.funcionarioTable .funcionarioHeader{
+  background-color: #cecece;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  border-radius: 4px;
+  justify-content: space-between;
+  padding-inline: 60px;
+  align-items: center;
+}
+
+.funcionarioTable .funcionarioItem{
+  background-color: #e7e7e7;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  padding-inline: 40px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.funcionarioTable .funcionarioItem .editBtn{
+  cursor: pointer;
+  color: #3B8686;
+}
+
+.funcionariosContentBox{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.funcionariosContentBox .newFuncionario{
+  height: 40px;
+  width: 10%;
+  border: 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #3B8686;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 90%;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.funcionariosForm{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.funcionarioInputBox{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.funcionarioInputBox input{
+  height: 40px;
+}
+
+.funcionarioRegisterBtn{
+  height: auto;
+  width: 15%;
+  border: 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #3B8686;
+}

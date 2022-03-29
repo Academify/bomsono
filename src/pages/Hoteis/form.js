@@ -5,7 +5,7 @@ export default function HotelRegister({setCreating}){
     <form action="">
       <input type="text" placeholder='Cidade'/>
       <input type="text" placeholder='Estado' />
-      <button type="submit" onClick={() => setCreating(false)}>Enviar</button>
+      <button className="hotelRegisterBtn" type="submit" onClick={() => setCreating(false)}>Enviar</button>
     </form>
   );
 }
