@@ -7,11 +7,11 @@
 
 }
 
-.clienteForm{
+.limpezaForm{
   margin-top: 30px;
 }
 
-.clienteTable{
+.limpezaTable{
   
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
   align-items: center;
 }
 
-.clienteHeader{
+.limpezaHeader{
   background-color: #cecece;
   width: 100%;
   display: flex;
@@ -33,7 +33,7 @@
   align-items: center;
 }
 
-.clienteItem{
+.limpezaItem{
   background-color: #e7e7e7;
   width: 100%;
   display: flex;
@@ -50,13 +50,13 @@
 }
 
 
-.clienteContentBox{
+.limpezaContentBox{
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.newCliente{
+.newLimpeza{
   height: 40px;
   width: 10%;
   border: 5px;
@@ -71,31 +71,24 @@
   cursor: pointer;
 }
 
-.clienteContentBox form{
+.limpezaContentBox form{
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
 
-.clienteInputBox{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
-}
-
-.clienteContentBox form input[type=number]{
+.limpezaContentBox form input[type=number]{
   height: 40px;
   border-radius: 4px;
 }
-.clienteContentBox form input[type=checkbox]{
+.limpezaContentBox form input[type=checkbox]{
   height: 20px;
   border-radius: 4px;
 }
 
-.clienteRegisterBtn{
+.limpezaRegisterBtn{
   height: 40px;
-  width: 100%;
+  width: 30%;
   border: 5px;
   border-radius: 4px;
   color: #fff;
@@ -117,41 +110,12 @@
   align-items: center;
 }
 
-.clienteContentBox form input{
+.limpezaContentBox form input{
   height: 40px;
   border-radius: 4px;
 }
 
-.clienteContentBox form input[type=text]{
+.limpezaContentBox form input[type=text]{
   height: 40px;
   border-radius: 4px;
-}
-
-.clienteCreateEndereco{
-  height: 40px;
-  width: 100%;
-  border: 5px;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #4fc6c6;
-}
-
-.clienteButtonBox{
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  gap: 10px;
-}
-
-.createEnderecoTitle{
-  margin-top: 40px;
-}
-
-.createEnderecoBtn{
-  height: 40px;
-  width: 100%;
-  border: 5px;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #3B8686;
 }

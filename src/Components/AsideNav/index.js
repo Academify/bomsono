@@ -17,7 +17,7 @@ export default function AsideNav(){
         <div className="item" onClick={() => navigate('/clientes')}>Clientes</div>
         <div className="item" onClick={() => navigate('/reservas')}>Reservas</div>
         <div className="item" onClick={() => navigate('/acomodacoes')}>Acomodações</div>
-        <div className="item" onClick={() => navigate('/servicos')}>Serviços</div>
+        <div className="item" onClick={() => navigate('/limpeza')}>Limpeza</div>
         <div className="item" onClick={() => navigate('/produtos')}>Produtos</div>
       </nav>
     </aside>
