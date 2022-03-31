@@ -2,8 +2,9 @@ import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
 import ReservaRegister from './form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReservaEdit from './edit';
+import api from '../../services/api';
 
 
 
@@ -11,6 +12,20 @@ export default function Reservas(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [reserva, setReserva] = useState({});
+  const [reservas, setReservas] = useState([]);
+  const [clientes, setClientes] = useState([]);
+
+  useEffect(async () => {
+    const response = await api.get('/all-bookings');
+    const cli = await api.get('/all-clients');
+    setClientes(cli.data);
+    setReservas(response.data);
+  }, [])
+
+  function bindCliente(id){
+    const c = clientes.find(i => i.client_id === id);
+    return c.client_name;
+  }
 
   function renderContent(){
     if(creating){
@@ -30,16 +45,19 @@ export default function Reservas(){
               <h2>Tipo do quarto</h2>
               <h2>Ações</h2>
             </div>
-            <div className='clienteItem'>
-              <h2>Ivo Stonks</h2>
-              <h2>3</h2>
-              <h2>31/02/2022</h2>
-              <h2>5</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setReserva({nome: "Ivo Stonks", numberPeople: 3, checkin: '31/02/2022', checkout: '33/02/2022', tipoQuarto: 5});
-              }}>Editar</h2>
-            </div>
+            {
+              reservas.map(item => (
+                <div className='clienteItem'>
+                  <h2>{bindCliente(item.client)}</h2>
+                  <h2>{item.number_people}</h2>
+                  <h2>{item.start_date.substring(0, 10)}</h2>
+                  <h2>{item.booked_room_type}</h2>
+                  <h2 className='editBtn' onClick={() => {
+                    setEditing(true)
+                  }}>Editar</h2>
+                </div>
+              ))
+            }
                       
           </div>
         </>
