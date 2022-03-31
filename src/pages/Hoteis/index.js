@@ -41,7 +41,7 @@ export default function Hoteis(){
             </div>
               {
                 allHotels.map(obj => (              
-                  <div className='hotelItem'>
+                  <div key={obj.hotel_id} className='hotelItem'>
                     <h2>{obj.hotel_id}</h2>
                     <h2>{obj.city}</h2>
                     <h2>{obj.state}</h2>

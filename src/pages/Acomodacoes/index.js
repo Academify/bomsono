@@ -41,7 +41,7 @@ export default function Acomodacoes(){
             </div>
               {
                 allAccom.map(obj => (              
-                  <div className='clienteItem'>
+                  <div key={obj.acc_id} className='clienteItem'>
                     <h2>{(obj.check_in_date).substring(0,10)}</h2>
                     <h2>{(obj.check_out_date).substring(0,10)}</h2>
                     <h2>{obj.room}</h2>

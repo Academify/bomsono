@@ -47,7 +47,7 @@ export default function Reservas(){
             </div>
             {
               reservas.map(item => (
-                <div className='clienteItem'>
+                <div key={item.booking_id} className='clienteItem'>
                   <h2>{bindCliente(item.client)}</h2>
                   <h2>{item.number_people}</h2>
                   <h2>{item.start_date.substring(0, 10)}</h2>

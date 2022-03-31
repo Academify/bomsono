@@ -43,7 +43,7 @@ export default function Limpeza(){
             </div>
               {
                 allCleanings.map(obj => (              
-                  <div className='limpezaItem'>
+                  <div key={obj.cleaning_id} className='limpezaItem'>
                     <h2>{(obj.date).substring(0,10)}</h2>
                     <h2>{obj.employee}</h2>
                     <h2>{obj.room}</h2>

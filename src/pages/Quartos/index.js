@@ -37,7 +37,7 @@ export default function Quartos(){
             </div>
             {
               quartos.map(item => (
-                <div className='quartoItem'>
+                <div key={item.room_type_id} className='quartoItem'>
                   <h2>{item.room_type_id}</h2>
                   <h2>{item.num_double_bed}</h2>
                   <h2>{item.num_single_bed}</h2>
