@@ -1,0 +1,17 @@
+.addConsumoBtn{
+  height: 40px;
+  width: 100%;
+  border: 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #1fa92b;
+}
+
+.geraNotaBtn{
+  height: 40px;
+  width: 100%;
+  border: 5px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #cc0202;
+}
