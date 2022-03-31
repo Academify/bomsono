@@ -1,15 +1,22 @@
 import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FuncionarioRegister from './form';
 import FuncionarioEdit from './edit';
+import api from '../../services/api';
 
 
 export default function Funcionarios(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [funcionario, setFuncionario] = useState({});
+  const [funcionarios, setFuncionarios] = useState([]);
+
+  useEffect(async () => {
+    const response = await api.get('/all-employees');
+    setFuncionarios(response.data);
+  },[]);
 
   function renderContent(){
     if(creating){
@@ -28,15 +35,21 @@ export default function Funcionarios(){
               <h2>Cargo</h2>
               <h2>Ações</h2>
             </div>
-            <div className='funcionarioItem'>
-              <h2>Thiago Ferreira</h2>
-              <h2>12335685546</h2>
-              <h2>Garçom</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setFuncionario({nome: "Thiago", cpf: 12333333333, cargo: "Garçom"})
-              }}>Editar</h2>
-            </div>
+            {
+              funcionarios.map(index => (
+
+                <div key={index.employee_id} className='funcionarioItem'>
+                  <h2>{index.name}</h2>
+                  <h2>{index.cpf}</h2>
+                  <h2>{index.occupation}</h2>
+                  <h2 className='editBtn' onClick={() => {
+                    setEditing(true)
+                    setFuncionario(index)
+                  }}>Editar</h2>
+                </div>
+                
+              ))
+            }
             
           </div>
         </>

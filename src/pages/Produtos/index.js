@@ -1,15 +1,22 @@
 import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductRegister from './form';
 import ProductEdit from './edit';
+import api from '../../services/api';
 
 
 export default function Produtos(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [product, setProduct] = useState({});
+  const [products, setProducts] = useState([]);
+
+  useEffect(async() => {
+    const response = await api.get('/all-products');
+    setProducts(response.data);
+  },[])
 
   function renderContent(){
     if(creating){
@@ -28,24 +35,16 @@ export default function Produtos(){
               <h2>Preço</h2>
               <h2>Ações</h2>
             </div>
-            <div className='productItem'>
-              <h2>1</h2>
-              <h2>Coca-Cola</h2>
-              <h2>R$ 12,00</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setProduct({nome: "Coca-Cola", preco: 12});
-              }}>Editar</h2>
-            </div>
-            <div className='productItem'>
-              <h2>2</h2>
-              <h2>Sandubom</h2>
-              <h2>R$ 5,75</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setProduct({nome: "Sandubom", preco: 5.75});
-              }}>Editar</h2>
-            </div>
+            {
+              products.map(item => (
+                <div className='productItem'>
+                  <h2>{item.product_id}</h2>
+                  <h2>{item.name}</h2>
+                  <h2>{item.product_price}</h2>
+                  <h2 className='editBtn' onClick={() => setEditing(true)}>Editar</h2>
+                </div>
+              ))
+            }
             
           </div>
         </>

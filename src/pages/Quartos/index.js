@@ -2,14 +2,21 @@ import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
 import QuartoRegister from './form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import QuartoEdit from './edit';
+import api from '../../services/api';
 
 
 export default function Quartos(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [quarto, setQuarto] = useState({});
+  const [quartos, setQuartos] = useState([]);
+
+  useEffect(async() => {
+    const response = await api.get('/all-room-types');
+    setQuartos(response.data);
+  },[])
 
   function renderContent(){
     if(creating){
@@ -28,15 +35,19 @@ export default function Quartos(){
               <h2>Camas Solteiro</h2>
               <h2>Ações</h2>
             </div>
-            <div className='quartoItem'>
-              <h2>1</h2>
-              <h2>1</h2>
-              <h2>2</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setQuarto({camasCasal: 1, camasSolteiro: 2, valorDiaria: 500, adaptado: false, tv: true, geladeira: true})
-              }}>Editar</h2>
-            </div>
+            {
+              quartos.map(item => (
+                <div className='quartoItem'>
+                  <h2>{item.room_type_id}</h2>
+                  <h2>{item.num_double_bed}</h2>
+                  <h2>{item.num_single_bed}</h2>
+                  <h2 className='editBtn' onClick={() => {
+                    setEditing(true)
+                    setQuarto({camasCasal: 1, camasSolteiro: 2, valorDiaria: 500, adaptado: false, tv: true, geladeira: true})
+                  }}>Editar</h2>
+                </div>
+              ))
+            }
             
           </div>
         </div>
