@@ -4,6 +4,7 @@ import Header from '../../Components/Header';
 import { useState } from 'react';
 import ClienteRegister from './form';
 import ClientEdit from './edit';
+import api from '../../services/api';
 
 export default function Clientes(){
   const [creating, setCreating] = useState(false);

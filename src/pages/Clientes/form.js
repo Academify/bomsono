@@ -1,7 +1,35 @@
 import { useState } from "react";
+import api from '../../services/api';
 
 export default function ClientRegister({setCreating}){
   const [creatingEndereco, setCreatingEndereco] = useState(false);
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [nationality, setNationality] = useState('');
+  const [addr, setAddr] = useState('');
+
+  async function handleAdress(e) {
+    e.preventDefault();
+
+    const data = {
+      name,
+      email,
+      phone,
+      password,
+      nationality,
+      addr
+    }
+
+    try {
+      const response = await api.post('client', data);
+      alert(`Cadastro de ${data.name} realizado com sucesso!`);
+    } catch(err) {
+      alert('Não foi possível cadastrar cliente!');
+    }
+  }
 
   function renderFormEndereco(){
     if(creatingEndereco){
