@@ -48,7 +48,7 @@ export default function Limpeza(){
                     <h2>{obj.employee}</h2>
                     <h2>{obj.room}</h2>
                     <h2 className='editBtn' onClick={() => {
-                      setLimpeza({data: obj.date, funcionario: obj.employee, quarto: obj.room});
+                      setLimpeza({id: obj.cleaning_id, data: obj.date, funcionario: obj.employee, quarto: obj.room});
                       setEditing(true);
                     }}>Editar</h2>
                   </div>                

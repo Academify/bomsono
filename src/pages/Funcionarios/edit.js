@@ -16,13 +16,12 @@ export default function FuncionarioEdit({funcionario, setEditing}){
   async function handleEdit(){
     const id = funcionario.employee_id;
     const data = {
-      id,
       name,
       age,
       cpf,
       occupation
     }
-    const response = await api.patch('/employee', data);
+    const response = await api.patch(`/employee?id=${id}`, data);
     setEditing(false)
   }
 
