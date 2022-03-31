@@ -37,7 +37,7 @@ export default function Produtos(){
             </div>
             {
               products.map(item => (
-                <div className='productItem'>
+                <div key={item.product_id} className='productItem'>
                   <h2>{item.product_id}</h2>
                   <h2>{item.name}</h2>
                   <h2>{item.product_price}</h2>

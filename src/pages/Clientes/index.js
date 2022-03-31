@@ -39,7 +39,7 @@ export default function Clientes(){
             </div>
               {
                 allClients.map(obj => (              
-                  <div className='clienteItem'>
+                  <div key={obj.client_id} className='clienteItem'>
                     <h2>{obj.client_name}</h2>
                     <h2>{obj.email}</h2>
                     <h2>{obj.phone}</h2>
