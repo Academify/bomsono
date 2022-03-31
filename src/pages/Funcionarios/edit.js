@@ -22,6 +22,7 @@ export default function FuncionarioEdit({funcionario, setEditing}){
       occupation
     }
     const response = await api.patch(`/employee?id=${id}`, data);
+    alert("Funcionário editado com sucesso!");
     setEditing(false)
   }
 
