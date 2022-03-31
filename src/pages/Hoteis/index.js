@@ -3,7 +3,8 @@ import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
 import HotelRegister from './form';
 import HotelEdit from './edit';
-import { useState } from 'react';
+import api from '../../services/api';
+import { useState, useEffect } from 'react';
 
 
 
@@ -11,9 +12,19 @@ export default function Hoteis(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [hotel, setHotel] = useState({});
+  const [isLoading, setLoading] = useState(true);
+  const [allHotels, setAllHotels] = useState([]);
+
+  useEffect(() => {
+    api.get('all-hotels').then(response => {
+      setAllHotels(response.data);
+      setLoading(false);
+    })
+  });
 
   function renderContent(){
-    if(creating){
+    if(isLoading) return (<div>Loading...</div>);
+    else if(creating){
       return(<HotelRegister setCreating={setCreating}/>);
     }else if(editing){
       return(<HotelEdit setEditing={setEditing} cidade={hotel.cidade} estado={hotel.estado}/>)
@@ -21,7 +32,6 @@ export default function Hoteis(){
       return( 
         <>
           <div className='newHotel' onClick={() => setCreating(true)}>Novo Hotel</div>
-          <h1>Hoteis</h1>
           <div className='hotelTable'>
             <div className='hotelHeader'>
               <h2>Código</h2>
@@ -29,25 +39,19 @@ export default function Hoteis(){
               <h2>Estado</h2>
               <h2>Ações</h2>
             </div>
-            <div className='hotelItem'>
-              <h2>1</h2>
-              <h2>Ipatinga</h2>
-              <h2>Minas Gerais</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setHotel({cidade: "Ipatinga", estado: "Minas Gerais"});
-              }}>Editar</h2>
-            </div>
-            <div className='hotelItem'>
-              <h2>2</h2>
-              <h2>Viçosa</h2>
-              <h2>Minas Gerais</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setHotel({cidade: "Viçosa", estado: "Minas Gerais"});
-              }}>Editar</h2>
-            </div>
-            
+              {
+                allHotels.map(obj => (              
+                  <div className='hotelItem'>
+                    <h2>{obj.hotel_id}</h2>
+                    <h2>{obj.city}</h2>
+                    <h2>{obj.state}</h2>
+                    <h2 className='editBtn' onClick={() => {          
+                      setHotel({cidade: obj.city, estado: obj.state});
+                      setEditing(true);
+                    }}>Editar</h2>
+                  </div>                
+                ))
+              }           
           </div>
         </>
       )

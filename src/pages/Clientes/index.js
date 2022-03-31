@@ -1,7 +1,7 @@
 import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ClienteRegister from './form';
 import ClientEdit from './edit';
 import api from '../../services/api';
@@ -10,9 +10,19 @@ export default function Clientes(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [cliente, setCliente] = useState({});
+  const [isLoading, setLoading] = useState(true);
+  const [allClients, setAllClients] = useState([]);
+
+  useEffect(() => {
+    api.get('all-clients').then(response => {
+      setAllClients(response.data);
+      setLoading(false);
+    })
+  });
 
   function renderContent(){
-    if(creating){
+    if(isLoading) return (<div>Loading...</div>);
+    else if(creating){
       return(<ClienteRegister setCreating={setCreating}/>);
     }else if(editing){
       return(<ClientEdit setEditing={setEditing} data={cliente}/>);
@@ -20,7 +30,6 @@ export default function Clientes(){
       return(
         <>
           <div className='newCliente' onClick={() => setCreating(true)}>Novo Cliente</div>
-          <h1>Clientes</h1>
           <div className='clienteTable'>
             <div className='clienteHeader'>
               <h2>Nome</h2>
@@ -28,16 +37,19 @@ export default function Clientes(){
               <h2>Telefone</h2>
               <h2>Ações</h2>
             </div>
-            <div className='clienteItem'>
-              <h2>Ivo Stonks</h2>
-              <h2>ivo@stonks.com</h2>
-              <h2>34234234-2342443</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setCliente({nome: "Ivo Stonks", email: "ivo@stonks.com", telefone: 123123123123, nacionalidade: 'Angulano', senha: '*****', endereco: { rua: 'Rua de casa', num: 22, bairro: 'Centro', cidade: 'Angulacity', estado: 'Minas Gerais'}});
-              }}>Editar</h2>
-            </div>
-                      
+              {
+                allClients.map(obj => (              
+                  <div className='clienteItem'>
+                    <h2>{obj.client_name}</h2>
+                    <h2>{obj.email}</h2>
+                    <h2>{obj.phone}</h2>
+                    <h2 className='editBtn' onClick={() => {
+                      setCliente({nome: obj.client_name, email: obj.email, telefone: obj.phone, nacionalidade: obj.nationality, senha: '*****', endereco: { rua: 'Rua de casa', num: 22, bairro: 'Centro', cidade: 'Angulacity', estado: 'Minas Gerais'}});
+                      setEditing(true);
+                    }}>Editar</h2>
+                  </div>                
+                ))
+              }                      
           </div>
         </>
       );

@@ -2,19 +2,27 @@ import './styles.css';
 import AsideNav from '../../Components/AsideNav';
 import Header from '../../Components/Header';
 import LimpezaRegister from './form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LimpezaEdit from './edit';
-
-
+import api from '../../services/api';
 
 export default function Limpeza(){
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const [limpeza, setLimpeza] = useState({});
+  const [isLoading, setLoading] = useState(true);
+  const [allCleanings, setAllCleanings] = useState([]);
 
+  useEffect(() => {
+    api.get('all-cleanings').then(response => {
+      setAllCleanings(response.data);
+      setLoading(false);
+    })
+  });
 
   function renderContent(){
-    if(creating){
+    if(isLoading) return (<div>Loading...</div>);
+    else if(creating){
       return(
         <LimpezaRegister setCreating={setCreating}/>
       );
@@ -26,7 +34,6 @@ export default function Limpeza(){
       return(
         <>
           <div className='newLimpeza' onClick={() => setCreating(true)}>Nova Limpeza</div>
-          <h1>Limpezas</h1>
           <div className='limpezaTable'>
             <div className='limpezaHeader'>
               <h2>Data</h2>
@@ -34,25 +41,19 @@ export default function Limpeza(){
               <h2>Quarto</h2>
               <h2>Ações</h2>
             </div>
-            <div className='limpezaItem'>
-              <h2>29/03/2022</h2>
-              <h2>Thiago</h2>
-              <h2>22A</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setLimpeza({data: Date.now(), funcionario: "Thiago", quarto: "22A"});
-              }}>Editar</h2>
-            </div>
-            <div className='limpezaItem'>
-              <h2>28/03/2022</h2>
-              <h2>Levi</h2>
-              <h2>21B</h2>
-              <h2 className='editBtn' onClick={() => {
-                setEditing(true)
-                setLimpeza({data: Date.now(), funcionario: "Levi", quarto: "21B"});
-              }}>Editar</h2>
-            </div>
-            
+              {
+                allCleanings.map(obj => (              
+                  <div className='limpezaItem'>
+                    <h2>{(obj.date).substring(0,10)}</h2>
+                    <h2>{obj.employee}</h2>
+                    <h2>{obj.room}</h2>
+                    <h2 className='editBtn' onClick={() => {
+                      setLimpeza({data: obj.date, funcionario: obj.employee, quarto: obj.room});
+                      setEditing(true);
+                    }}>Editar</h2>
+                  </div>                
+                ))
+              }              
           </div>
         </>
       );
